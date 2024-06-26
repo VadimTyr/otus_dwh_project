@@ -18,13 +18,6 @@ services:
       - 6432:5432
 
 
-  cube:
-    image: cubejs/cube:latest
-    ports:
-      - 4000:4000
-      - 15432:15432   
-    volumes:
-      - .:/cube/conf
 
 
   metabase:
