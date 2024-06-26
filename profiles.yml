@@ -1,0 +1,32 @@
+config:
+  send_anonymous_usage_stats: False
+  use_colors: True
+  partial_parse: True
+
+otus_dwh_project:
+  outputs:
+    dev:
+      type: postgres
+      threads: 1
+      host: postgres
+      port: 5432
+      user: postgres
+      pass: postgres
+      dbname: postgres
+      schema: dbt
+  target: dev 
+
+taxis:
+  outputs:
+
+    dev:
+      type: clickhouse
+      threads: 4 
+      host: localhost
+      port: 8123 
+      user: dbt_test
+      password: dbt_password
+      use_lw_deletes: true
+      schema: taxis_dbt 
+
+  target: dev

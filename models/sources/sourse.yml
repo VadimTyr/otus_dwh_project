@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: taxis_source
+    database: postgres
+    loader: S3
+    description: This references the main taxi table as copied from S3
+    tables:
+      - name: green_taxi_tripdata
+        identifier: green_taxi_tripdata

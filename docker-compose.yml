@@ -1,0 +1,43 @@
+version: '2'
+services:
+
+  devcontainer:
+    build:
+      context: .
+    volumes:
+      - .:/workspaces/otus_dwh_project/
+    ports:
+      - 8080:8080
+
+
+  postgres:
+    image: postgres
+    environment: 
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 6432:5432
+
+
+  cube:
+    image: cubejs/cube:latest
+    ports:
+      - 4000:4000
+      - 15432:15432   
+    volumes:
+      - .:/cube/conf
+
+
+  metabase:
+      image: metabase/metabase:latest
+      hostname: metabase
+      environment:
+        MB_DB_TYPE: postgres
+        MB_DB_DBNAME: postgres
+        MB_DB_PORT: 5432
+        MB_DB_USER: postgres
+        MB_DB_PASS: postgres
+        MB_DB_HOST: postgres
+      ports: 
+        - 3000:3000
+
+      
